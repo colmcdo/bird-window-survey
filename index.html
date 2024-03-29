@@ -52,7 +52,7 @@
           //Center map to UF
           zoom: 16,
           center: [-82.347594, 29.645359] // longitude, latitudes
-          //-82.352949, 29.645150
+          
         });
         const locateBtn = new Locate({
           view: view
@@ -75,9 +75,9 @@
        position: "bottom-right"
       });
 
-// Create a new SimpleMarkerSymbol
+// Create a new symbol for the existing survey results
 const symbol = new SimpleMarkerSymbol({
-  color: [226, 119, 40],  // Change this to the color you want
+  color: [255, 0, 0],  
   outline: {  // autocasts as new SimpleLineSymbol()
     color: [255, 0, 0], //red color
     width: 2
