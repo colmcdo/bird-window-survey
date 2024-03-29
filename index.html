@@ -38,7 +38,7 @@
 
     <!--loading the modules-->
     <script>
-      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Search", "esri/layers/FeatureLayer", "esri/symbols/SimpleMarkerSymbol", "esri/renderers/SimpleRenderer"], (esriConfig, Map, MapView, Locate, Search, FeatureLayer, SimpleMarkerSymbol, SimpleRenderer) => {
+      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Search", "esri/symbols/SimpleMarkerSymbol", "esri/renderers/SimpleRenderer", "esri/layers/FeatureLayer"], (esriConfig, Map, MapView, Locate, Search, SimpleMarkerSymbol, SimpleRenderer, FeatureLayer) => {
         //adding in API key
         esriConfig.apiKey = "AAPK9decdd6558d24937ac6614a6238a4349xJI9Du-3z4SyrQbfMmyLq4QXJjnxMWHpXGYgRVkG2Zj30pXtLr7MOAzKvkUj6KeH"
         
@@ -74,28 +74,31 @@
        position: "bottom-right"
       });
 
-        // Create featurelayer from feature service 
-      const layer = new FeatureLayer({ 
-        // URL to the survey results
-            url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_5d667ff57baa4c35a4c4aa4e1c913e14_results/FeatureServer"
-        });
-          //adding layer to the map
-          map.add(layer);
-      // Create a new SimpleMarkerSymbol
-        const symbol = new SimpleMarkerSymbol({
-       color: [226, 119, 40],  // Change this to the color you want
-      outline: {  // autocasts as new SimpleLineSymbol()
-      color: [255, 255, 255], //white color
-      width: 2
+// Create a new SimpleMarkerSymbol
+const symbol = new SimpleMarkerSymbol({
+  color: [226, 119, 40],  // Change this to the color you want
+  outline: {  // autocasts as new SimpleLineSymbol()
+    color: [255, 255, 255], //white color
+    width: 2
   },
-      size: 12,
-      style: "x"  // This sets the shape of the symbol to "x"
+  size: 12,
+  style: "x"  // This sets the shape of the symbol to "x"
 });
 
-    // Create a new SimpleRenderer using the symbol
-      const renderer = new SimpleRenderer({
-      symbol: symbol
+// Create a new SimpleRenderer using the symbol
+const renderer = new SimpleRenderer({
+  symbol: symbol
 });
+
+// Create featurelayer from feature service 
+const layer = new FeatureLayer({ 
+  // URL to the survey results
+  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_5d667ff57baa4c35a4c4aa4e1c913e14_results/FeatureServer",
+  renderer: renderer  // Set the renderer for the layer
+});
+
+// Adding layer to the map
+map.add(layer);
 
       });
     </script>
