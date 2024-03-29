@@ -79,14 +79,14 @@
 const symbol = new SimpleMarkerSymbol({
   color: [255, 0, 0],  
   outline: {  // autocasts as new SimpleLineSymbol()
-    color: [255, 0, 0], //red color
+    color: [0, 0, 0], //red color
     width: 2
   },
   size: 5,
   style: "x"  // This sets the shape of the symbol to "x"
 });
 
-// Create a new SimpleRenderer using the symbol
+// Creating a renderer for symbol
 const renderer = new SimpleRenderer({
   symbol: symbol
 });
