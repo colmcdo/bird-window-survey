@@ -38,7 +38,7 @@
 
     <!--loading the modules-->
     <script>
-      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Search", "esri/symbols/SimpleMarkerSymbol", "esri/widgets/Legend", "esri/renderers/SimpleRenderer", "esri/layers/FeatureLayer"], (esriConfig, Map, MapView, Locate, Search, SimpleMarkerSymbol, Legend, SimpleRenderer, FeatureLayer) => {
+      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Search", "esri/symbols/SimpleMarkerSymbol", "esri/renderers/SimpleRenderer", "esri/layers/FeatureLayer", "esri/widgets/Legend"], (esriConfig, Map, MapView, Locate, Search, SimpleMarkerSymbol, SimpleRenderer, FeatureLayer, Legend) => {
         //adding in API key
         esriConfig.apiKey = "AAPK9decdd6558d24937ac6614a6238a4349xJI9Du-3z4SyrQbfMmyLq4QXJjnxMWHpXGYgRVkG2Zj30pXtLr7MOAzKvkUj6KeH"
         
@@ -86,16 +86,7 @@ const symbol = new SimpleMarkerSymbol({
   style: "x"  // This sets the shape of the symbol to "x"
 });
 
-// Creating a legend for the "x" symbols
-const legend = new Legend({
-  view: view,
-  layerInfos: [{
-    layer: layer,
-    title: "Bird Window Collision Survey Results"
-  }]
-});
-// adding legend to the bottom-left corner of the screen
-view.ui.add(legend, "bottom-left");
+
 
 
 // Creating a renderer for symbol
@@ -114,6 +105,19 @@ const layer = new FeatureLayer({
 map.add(layer);
 
       });
+
+
+// Creating a legend for the "x" symbols
+const legend = new Legend({
+  view: view,
+  layerInfos: [{
+    layer: layer,
+    title: "Bird Window Collision Survey Results"
+  }]
+});
+// adding legend to the bottom-left corner of the screen
+view.ui.add(legend, "bottom-left");
+
     </script>
   </head>
 
