@@ -30,6 +30,21 @@
   background-color: #f57878;
 }
 
+
+#titleDiv {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 5px;
+      border-radius: 5px;
+      z-index: 1;
+      text-align: center;
+      max-width: 500px;
+      font-size: 10px;
+    }
+
     </style>
 
     <!--importing the css and libraries for esri.js-->
@@ -125,6 +140,10 @@ map.add(layer);
   </head>
 
   <body>
+    <div id="titleDiv">
+      <h1>Bird Window Collisions at UF</h1>
+      <!--<p>This map displays locations of bird window collisons on the University of Florida's main campus. If you find a bird that you believe has collided with a window, click the red "add survey" button to add your results.</p>-->
+    </div>
     <a href="https://arcg.is/1jXSyK2"target="_blank" class="addRecordBtn">Add Survey</a>
     <div id="viewDiv"></div>
   </body>
