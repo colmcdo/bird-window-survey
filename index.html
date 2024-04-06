@@ -1,6 +1,7 @@
 <!--meta for the browser to allow for mobile first design-->
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+/*styling the title*/
     <title>Bird Window Collision Survey</title>
     <style>
       html,
@@ -11,6 +12,7 @@
         height: 100%;
         width: 100%;
       }
+/*styling the add survey button */
       .addRecordBtn {
       position: absolute;
       z-index: 10;
@@ -30,7 +32,7 @@
   background-color: #f57878;
 }
 
-
+/* styling the title background */
 #titleDiv {
       position: absolute;
       top: 10px;
@@ -58,7 +60,7 @@
         esriConfig.apiKey = "AAPK9decdd6558d24937ac6614a6238a4349xJI9Du-3z4SyrQbfMmyLq4QXJjnxMWHpXGYgRVkG2Zj30pXtLr7MOAzKvkUj6KeH"
         
         const map = new Map({
-          basemap: "hybrid"
+          basemap: "hybrid" // using the hybrid basemap
         });
 
         const view = new MapView({
@@ -67,8 +69,9 @@
           //Center map to UF
           zoom: 16,
           center: [-82.347594, 29.645359] // longitude, latitudes
+          });
           
-        });
+        //adding locate button
         const locateBtn = new Locate({
           view: view
         });
@@ -90,38 +93,31 @@
        position: "bottom-right"
       });
 
-// Create a new symbol for the existing survey results
-const symbol = new SimpleMarkerSymbol({
-  color: [255, 0, 0],  
-  outline: {  // autocasts as new SimpleLineSymbol()
-    color: [255, 0, 0], //red color
-    width: 2
-  },
-  size: 5,
-  style: "x"  // This sets the shape of the symbol to "x"
-});
+    // Create a new symbol for the existing survey results
+    const symbol = new SimpleMarkerSymbol({
+      color: [255, 0, 0],  
+      outline: {  // autocasts as new SimpleLineSymbol()
+        color: [255, 0, 0], //red color
+        width: 2
+      },
+        size: 5,
+      style: "x"  // "x" shaped to represent struck birds
+        });
 
+    // Creating a renderer for symbol
+    const renderer = new SimpleRenderer({
+      symbol: symbol
+    });
 
-
-
-// Creating a renderer for symbol
-const renderer = new SimpleRenderer({
-  symbol: symbol
-});
-
-// Create featurelayer from feature service 
-const layer = new FeatureLayer({ 
+    // Create featurelayer from feature service 
+    const layer = new FeatureLayer({ 
   // URL to the survey results
   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_5d667ff57baa4c35a4c4aa4e1c913e14_results/FeatureServer",
   renderer: renderer  // Set the renderer for the layer
-});
+    });
 
-// Adding layer to the map
-map.add(layer);
-
-    
-
-
+    // Adding layer to the map
+    map.add(layer);
 
   // Creating a legend for the "x" symbols
   const legend = new Legend({
