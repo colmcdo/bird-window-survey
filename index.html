@@ -56,21 +56,22 @@
     <script>
       require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Search", "esri/symbols/SimpleMarkerSymbol", "esri/renderers/SimpleRenderer", "esri/layers/FeatureLayer", "esri/widgets/Legend"], (esriConfig, Map, MapView, Locate, Search, SimpleMarkerSymbol, SimpleRenderer, FeatureLayer, Legend) => {
         //adding in API key
-        esriConfig.apiKey = "AAPK9decdd6558d24937ac6614a6238a4349xJI9Du-3z4SyrQbfMmyLq4QXJjnxMWHpXGYgRVkG2Zj30pXtLr7MOAzKvkUj6KeH"
-        
+        esriConfig.apiKey = "AAPK9decdd6558d24937ac6614a6238a4349xJI9Du-3z4SyrQbfMmyLq4QXJjnxMWHpXGYgRVkG2Zj30pXtLr7MOAzKvkUj6KeH" 
+
+        // constructing a new map with the hybrid basemap
         const map = new Map({
           basemap: "hybrid" // using the hybrid basemap
         });
 
         const view = new MapView({
-          container: "viewDiv",
+          container: "viewDiv", // calling the view parameters
           map: map,
           //Center map to UF
           zoom: 16,
           center: [-82.347594, 29.645359] // longitude, latitudes
           });
           
-        //adding locate button
+        //adding locate button function
         const locateBtn = new Locate({
           view: view
         });
@@ -81,7 +82,7 @@
         });
 
 
-        //Adding the address bar
+        //Adding the address bar function
           // Create a Search widget
       const searchWidget = new Search({
        view: view
@@ -103,19 +104,19 @@
       style: "x"  // "x" shaped to represent struck birds
         });
 
-    // Creating a renderer for symbol
+    // Creating a renderer for symbol, would give the renderer a defined name
     const renderer = new SimpleRenderer({
       symbol: symbol
     });
 
-    // Create featurelayer from feature service 
+    // Create bird strike layer from feature service 
     const layer = new FeatureLayer({ 
   // URL to the survey results
   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_5d667ff57baa4c35a4c4aa4e1c913e14_results/FeatureServer",
   renderer: renderer  // Set the renderer for the layer
     });
 
-    // Adding layer to the map
+    // Adding layer to the map, would give the layer a defined name
     map.add(layer);
 
   // Creating a legend for the "x" symbols
